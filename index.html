@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Açaí Vivo | Açaiteria — Monte seu açaí online</title>
+<meta name="description" content="Monte seu açaí do jeito que você gosta: escolha tamanho, base, complementos e peça por entrega ou retirada. Rápido, fácil e saboroso.">
+<meta name="theme-color" content="#4a1a6b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Açaí Vivo — Monte seu açaí online">
+<meta property="og:description" content="Escolha o tamanho, a base e os complementos e peça em poucos cliques.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"IceCreamShop","name":"Açaí Vivo","servesCuisine":"Açaí","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"Rua das Palmeiras, 123","addressCountry":"BR"},"openingHours":"Mo-Su 12:00-23:00","acceptsReservations":false}
+</script>
+</head>
+<body>
+<a class="skip" href="#cardapio">Ir para o cardápio</a>
+
+<header class="top" id="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#inicio" aria-label="Início">
+      <svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#4a1a6b"/><path d="M9 21h22c0 7-5 11-11 11S9 28 9 21z" fill="#fff"/><path d="M10 21c1-9 19-9 20 0z" fill="#b48be0"/><circle cx="16" cy="17" r="2.3" fill="#8cc152"/><circle cx="23" cy="16" r="2.3" fill="#f6d55c"/></svg>
+      <span data-store>Açaí Vivo</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="#inicio">Início</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#monte" class="nav-cta">Monte seu açaí</a>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="top-actions">
+      <button class="cart-btn" data-act="cart-open" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 7H6"/></svg>
+        <span class="count" id="cartCount">0</span>
+      </button>
+      <button class="burger" data-act="toggle-nav" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="closed-bar" id="closedBar" hidden>Estamos fechados no momento. Você pode montar o pedido, mas ele só poderá ser finalizado quando abrirmos.</div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap hero-in">
+    <div class="hero-text">
+      <span class="eyebrow">Açaí fresquinho, do seu jeito</span>
+      <h1>Seu açaí perfeito,<br>montado em poucos cliques.</h1>
+      <p>Açaí cremoso, frutas selecionadas e complementos à vontade. Escolha o tamanho, capriche nos toppings e receba em casa ou retire na loja.</p>
+      <div class="hero-btns">
+        <button class="btn primary lg" data-act="open-builder">Monte seu açaí</button>
+        <a class="btn light lg" href="#cardapio">Ver cardápio</a>
+      </div>
+      <button class="repeat" id="repeatBtn" data-act="repeat" hidden>↻ Repetir meu último pedido</button>
+      <ul class="hero-badges">
+        <li>🍇 Açaí de verdade</li><li>⚡ Pedido rápido</li><li>🛵 Entrega e retirada</li>
+      </ul>
+    </div>
+    <div class="hero-art" id="heroArt" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="sec" id="categorias">
+  <div class="wrap">
+    <div class="sec-head"><h2>Escolha por categoria</h2><p>Acesso rápido ao que você mais gosta.</p></div>
+    <div class="cats" id="catGrid"></div>
+  </div>
+</section>
+
+<section class="sec alt" id="populares">
+  <div class="wrap">
+    <div class="sec-head"><h2>Os mais pedidos</h2><p>Os favoritos da nossa clientela.</p></div>
+    <div class="grid" id="popularGrid"></div>
+  </div>
+</section>
+
+<section class="sec" id="promo">
+  <div class="wrap">
+    <div class="promo-box">
+      <div>
+        <span class="eyebrow dark">Promoção</span>
+        <h2 id="promoTitle"></h2>
+        <p id="promoText"></p>
+        <button class="btn light" data-act="copy-code" id="promoCode"></button>
+      </div>
+      <div class="promo-art" id="promoArt" aria-hidden="true"></div>
+    </div>
+    <div class="grid" id="promoGrid" style="margin-top:22px"></div>
+  </div>
+</section>
+
+<section class="sec alt" id="monte">
+  <div class="wrap build-cta">
+    <div>
+      <h2>Monte seu açaí em 6 passos</h2>
+      <ol class="steps-list">
+        <li><b>1</b> Tamanho</li><li><b>2</b> Base</li><li><b>3</b> Complementos</li>
+        <li><b>4</b> Adicionais especiais</li><li><b>5</b> Observações</li><li><b>6</b> Revisão</li>
+      </ol>
+      <p class="muted">O preço atualiza a cada escolha, e você sabe exatamente quanto vai pagar.</p>
+      <button class="btn primary lg" data-act="open-builder">Começar a montar</button>
+    </div>
+    <div class="build-art" id="buildArt" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="sec" id="cardapio">
+  <div class="wrap">
+    <div class="sec-head"><h2>Cardápio</h2><p>Tudo em um só lugar, sem trocar de página.</p></div>
+    <div class="menu-tools">
+      <div class="chips" id="menuFilters" role="tablist" aria-label="Filtrar por categoria"></div>
+      <input type="search" id="menuSearch" placeholder="Buscar no cardápio…" aria-label="Buscar no cardápio">
+    </div>
+    <div class="grid" id="menuGrid"></div>
+    <p class="muted center" id="menuEmpty" hidden>Nenhum item encontrado. Tente outra busca ou categoria.</p>
+  </div>
+</section>
+
+<section class="sec alt" id="diferenciais">
+  <div class="wrap">
+    <div class="sec-head"><h2>Por que escolher a <span data-store>Açaí Vivo</span></h2></div>
+    <div class="perks">
+      <div><i>🍇</i><h3>Ingredientes selecionados</h3><p>Açaí de qualidade e frutas frescas todos os dias.</p></div>
+      <div><i>🥜</i><h3>Variedade de complementos</h3><p>Frutas, cremes, crocantes e coberturas para todos os gostos.</p></div>
+      <div><i>🥄</i><h3>Preparação cuidadosa</h3><p>Cada copo é montado com atenção ao seu pedido.</p></div>
+      <div><i>📱</i><h3>Facilidade para pedir</h3><p>Do celular, em poucos cliques, sem complicação.</p></div>
+      <div><i>🛵</i><h3>Entrega e retirada</h3><p>Receba em casa ou retire na loja, como preferir.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="sobre">
+  <div class="wrap about">
+    <div class="about-art" id="aboutArt" aria-hidden="true"></div>
+    <div>
+      <h2>Sobre nós</h2>
+      <p><span data-store>Açaí Vivo</span> nasceu do amor por um bom açaí: cremoso, gelado e do tamanho da sua vontade. Trabalhamos com ingredientes selecionados e deixamos você no comando de cada detalhe do seu copo.</p>
+      <p>Nossa missão é simples: transformar o seu momento de pausa em uma experiência saborosa, prática e sem complicação.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="contato">
+  <div class="wrap contact">
+    <div>
+      <h2>Contato</h2>
+      <ul class="clist">
+        <li>📍 <span id="cAddress"></span></li>
+        <li>🕒 <span id="cHours"></span></li>
+        <li>📞 <span id="cPhone"></span></li>
+        <li>📷 <span id="cInsta"></span></li>
+      </ul>
+      <a class="btn primary" id="cWa" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+    <div class="contact-card">
+      <h3>Como funciona</h3>
+      <p>Monte o pedido, finalize e envie pelo WhatsApp. Nós confirmamos e avisamos cada etapa: preparo, entrega ou retirada.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <b data-store>Açaí Vivo</b> · Feito com carinho e muito açaí · <a href="admin.html">Área do lojista</a>
+  </div>
+</footer>
+
+<button class="fab" id="fab" data-act="cart-open" hidden>
+  <span>🛒 <b id="fabCount">0</b> item(ns)</span><span id="fabTotal">R$ 0,00</span><span class="fab-go">Ver carrinho →</span>
+</button>
+
+<!-- Carrinho -->
+<div class="overlay drawer" id="cart" hidden role="dialog" aria-modal="true" aria-label="Carrinho"></div>
+<!-- Montagem -->
+<div class="overlay full" id="builder" hidden role="dialog" aria-modal="true" aria-label="Monte seu açaí"></div>
+<!-- Checkout -->
+<div class="overlay full" id="checkout" hidden role="dialog" aria-modal="true" aria-label="Finalizar pedido"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
