@@ -6,24 +6,25 @@
    ============================================================ */
 
 const DEFAULTS = {
+  v: 2,                             // versão da configuração: ao mudar, o navegador descarta a configuração antiga salva
   store: {
-    name: 'Açaí Vivo',
-    whatsapp: '5551999999999',      // DDI+DDD+número, só dígitos. TROQUE pelo número real.
-    phone: '(51) 99999-9999',
-    address: 'Rua das Palmeiras, 123 — Centro',
-    hours: 'Todos os dias, das 12h às 23h',
-    instagram: '@acaivivo',
-    deliveryFee: 6,
-    freeDeliveryAbove: 60,          // 0 = desativado
-    minOrder: 15,
-    pixKey: 'pix@acaivivo.com.br',
+    name: 'DaHora Açaí',
+    whatsapp: '5551998985995',      // DDI+DDD+número, só dígitos (número real da loja)
+    phone: '(51) 99898-5995',
+    address: 'Rua Independência, 769 — Centro, Igrejinha/RS',
+    hours: 'Veja o horário nos destaques do nosso Instagram',
+    instagram: '@dahoracaiteria',
+    deliveryFee: 6,                 // CONFIRMAR: valor de exemplo
+    freeDeliveryAbove: 60,          // CONFIRMAR: 0 = desativado
+    minOrder: 15,                   // CONFIRMAR: valor de exemplo
+    pixKey: '',                     // vazio = a opção PIX não aparece no checkout
     open: true,
     adminPass: 'admin123'           // TROQUE. (proteção básica; veja README)
   },
   promo: {
-    title: 'Combo Casal com preço especial',
-    text: 'Dois açaís de 500 ml com complementos à escolha. Use o cupom ACAI10 e ganhe 10% OFF no pedido.',
-    code: 'ACAI10'
+    title: 'Economize pedindo na DaHora',
+    text: 'As promoções e o programa de fidelidade ficam nos destaques “economize” e “fidelidade” do nosso Instagram. Dê uma olhada antes de pedir.',
+    code: ''
   },
   categories: [
     { id: 'tradicionais', name: 'Açaís tradicionais', emoji: '🍇' },
@@ -91,24 +92,25 @@ const DEFAULTS = {
     { id: 'p2', cat: 'tradicionais', name: 'Açaí Zero Açúcar', desc: 'Base zero açúcar com banana e granola. Leve e saboroso.', sizeLabel: '400 ml', price: 21.9, custom: true, sizeId: 's400', baseId: 'b_zero', preset: ['t_banana', 't_granola'], popular: false, available: true, img: '' },
     { id: 'p3', cat: 'tradicionais', name: 'Açaí com Banana', desc: 'Batido com banana, granola, leite condensado e Ovomaltine.', sizeLabel: '500 ml', price: 24.9, custom: true, sizeId: 's500', baseId: 'b_banana', preset: ['t_granola', 't_leitecond', 't_ovomaltine'], popular: true, available: true, img: '' },
     { id: 'p4', cat: 'tradicionais', name: 'Açaí com Morango', desc: 'Base de morango com morangos frescos e leite em pó.', sizeLabel: '500 ml', price: 26.9, custom: true, sizeId: 's500', baseId: 'b_morango', preset: ['t_morango', 't_leitepo'], popular: false, available: true, img: '' },
-    { id: 'p5', cat: 'especiais', name: 'Ninho com Morango', desc: 'O queridinho: creme de ninho, morangos e leite em pó.', sizeLabel: '500 ml', price: 29.9, custom: true, sizeId: 's500', baseId: 'b_trad', preset: ['t_ninho', 't_morango', 't_leitepo'], popular: true, available: true, img: '' },
-    { id: 'p6', cat: 'especiais', name: 'Nutella Premium', desc: 'Creme de avelã, morangos e granola. Pura indulgência.', sizeLabel: '500 ml', price: 34.9, custom: true, sizeId: 's500', baseId: 'b_trad', preset: ['t_avela', 't_morango', 't_granola'], popular: false, available: true, img: '' },
+    { id: 'p5', cat: 'especiais', name: 'Ninho com Morango', desc: 'O queridinho: creme de ninho, morangos e leite em pó.', sizeLabel: '500 ml', price: 29.9, custom: true, sizeId: 's500', baseId: 'b_trad', preset: ['t_ninho', 't_morango', 't_leitepo'], popular: true, available: true, img: 'img/morango.jpg' },
+    { id: 'p6', cat: 'especiais', name: 'Nutella Premium', desc: 'Creme de avelã, morangos e granola. Pura indulgência.', sizeLabel: '500 ml', price: 34.9, custom: true, sizeId: 's500', baseId: 'b_trad', preset: ['t_avela', 't_morango', 't_granola'], popular: false, available: true, img: 'img/chocolate.jpg' },
     { id: 'p7', cat: 'especiais', name: 'Açaí Fit', desc: 'Zero açúcar, banana, granola e farinha láctea.', sizeLabel: '400 ml', price: 23.9, custom: true, sizeId: 's400', baseId: 'b_zero', preset: ['t_banana', 't_granola', 't_flactea'], popular: false, available: true, img: '' },
     { id: 'p8', cat: 'especiais', name: 'Paçoca Crocante', desc: 'Creme de paçoca, paçoca em pedaços e amendoim.', sizeLabel: '500 ml', price: 27.9, custom: true, sizeId: 's500', baseId: 'b_trad', preset: ['t_cpacoca', 't_pacoca', 't_amendoim'], popular: true, available: true, img: '' },
     { id: 'p9', cat: 'copos', name: 'Copo Power', desc: 'Prático para levar: açaí, banana e granola.', sizeLabel: '300 ml', price: 16.9, custom: true, sizeId: 's300', baseId: 'b_trad', preset: ['t_banana', 't_granola'], popular: false, available: true, img: '' },
-    { id: 'p10', cat: 'copos', name: 'Copo Duplo', desc: 'Camadas de açaí e creme de ninho com morango.', sizeLabel: '500 ml', price: 25.9, custom: true, sizeId: 's500', baseId: 'b_trad', preset: ['t_ninho', 't_morango'], popular: false, available: true, img: '' },
+    { id: 'p10', cat: 'copos', name: 'Copo Duplo', desc: 'Camadas de açaí e creme de ninho com morango.', sizeLabel: '500 ml', price: 25.9, custom: true, sizeId: 's500', baseId: 'b_trad', preset: ['t_ninho', 't_morango'], popular: false, available: true, img: 'img/copos.jpg' },
+    { id: 'p18', cat: 'copos', name: 'Salada de Frutas', desc: 'Frutas frescas picadas com granola, direto no copo.', sizeLabel: '400 ml', price: 14.9, custom: false, popular: false, available: true, img: 'img/frutas.jpg' },
     { id: 'p11', cat: 'tigelas', name: 'Tigela Tropical', desc: 'Manga, banana, granola e leite condensado.', sizeLabel: '700 ml', price: 32.9, custom: true, sizeId: 's700', baseId: 'b_trad', preset: ['t_manga', 't_banana', 't_granola', 't_leitecond'], popular: false, available: true, img: '' },
     { id: 'p12', cat: 'tigelas', name: 'Tigela Família', desc: 'Um litro para compartilhar, com 4 complementos.', sizeLabel: '1 litro', price: 42.9, custom: true, sizeId: 's1000', baseId: 'b_trad', preset: ['t_banana', 't_morango', 't_granola', 't_leitecond'], popular: false, available: true, img: '' },
-    { id: 'p13', cat: 'combos', name: 'Combo Casal', desc: '2 açaís de 500 ml com 3 complementos cada.', sizeLabel: '2 × 500 ml', price: 44.9, oldPrice: 51.8, custom: false, popular: true, available: true, img: '' },
-    { id: 'p14', cat: 'combos', name: 'Combo Amigos', desc: '3 copos de 300 ml com 2 complementos cada.', sizeLabel: '3 × 300 ml', price: 39.9, oldPrice: 47.7, custom: false, popular: false, available: true, img: '' },
+    { id: 'p13', cat: 'combos', name: 'Combo Casal', desc: '2 açaís de 500 ml com 3 complementos cada.', sizeLabel: '2 × 500 ml', price: 44.9, custom: false, popular: true, available: true, img: '' },
+    { id: 'p14', cat: 'combos', name: 'Combo Amigos', desc: '3 copos de 300 ml com 2 complementos cada.', sizeLabel: '3 × 300 ml', price: 39.9, custom: false, popular: false, available: true, img: '' },
     { id: 'p15', cat: 'bebidas', name: 'Milk-shake de Açaí', desc: 'Açaí batido com sorvete de creme. Cremoso e gelado.', sizeLabel: '400 ml', price: 17.9, custom: false, popular: false, available: true, img: '' },
     { id: 'p16', cat: 'bebidas', name: 'Vitamina de Açaí com Banana', desc: 'Açaí, banana e leite, batidos na hora.', sizeLabel: '500 ml', price: 15.9, custom: false, popular: false, available: true, img: '' },
     { id: 'p17', cat: 'bebidas', name: 'Água de coco', desc: 'Geladinha, para acompanhar seu açaí.', sizeLabel: '300 ml', price: 6.9, custom: false, popular: false, available: true, img: '' }
   ],
   coupons: [
-    { code: 'ACAI10', type: 'percent', value: 10, minOrder: 30, active: true },
-    { code: 'BEMVINDO', type: 'fixed', value: 5, minOrder: 25, active: true },
-    { code: 'FRETEGRATIS', type: 'frete', value: 0, minOrder: 40, active: true }
+    { code: 'ACAI10', type: 'percent', value: 10, minOrder: 30, active: false },
+    { code: 'BEMVINDO', type: 'fixed', value: 5, minOrder: 25, active: false },
+    { code: 'FRETEGRATIS', type: 'frete', value: 0, minOrder: 40, active: false }
   ]
 };
 
@@ -118,7 +120,7 @@ const DB = {
   load() {
     try {
       const s = JSON.parse(localStorage.getItem('acai_cfg'));
-      if (s && s.products) {
+      if (s && s.products && s.v === DEFAULTS.v) {
         // garante chaves novas sem perder o que o lojista editou
         for (const k of Object.keys(DEFAULTS)) if (s[k] === undefined) s[k] = structuredClone(DEFAULTS[k]);
         s.store = Object.assign({}, DEFAULTS.store, s.store);

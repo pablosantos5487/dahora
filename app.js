@@ -43,10 +43,6 @@ function card(p) {
 function renderHome() {
   $$('[data-store]').forEach(el => el.textContent = cfg.store.name);
   document.title = `${cfg.store.name} | Açaiteria — Monte seu açaí online`;
-  $('#heroArt').innerHTML = bowlSVG('bowl', 11);
-  $('#promoArt').innerHTML = bowlSVG('combo', 5);
-  $('#buildArt').innerHTML = bowlSVG('cup', 21);
-  $('#aboutArt').innerHTML = bowlSVG('bowl', 33);
   $('#catGrid').innerHTML = cfg.categories.map(c => `<button class="cat" data-act="cat" data-id="${esc(c.id)}"><i>${esc(c.emoji)}</i>${esc(c.name)}</button>`).join('');
   $('#popularGrid').innerHTML = cfg.products.filter(p => p.popular && p.available !== false).slice(0, 4).map(card).join('') || '<p class="muted">Em breve.</p>';
   const promos = cfg.products.filter(p => p.oldPrice > p.price && p.available !== false);
@@ -54,10 +50,12 @@ function renderHome() {
   $('#promoText').textContent = cfg.promo.text;
   const pc = $('#promoCode'); pc.textContent = cfg.promo.code ? `Copiar cupom ${cfg.promo.code}` : ''; pc.hidden = !cfg.promo.code; pc.dataset.code = cfg.promo.code;
   $('#promoGrid').innerHTML = promos.map(card).join('');
-  $('#cAddress').textContent = cfg.store.address;
+  const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cfg.store.address)}`;
+  $('#cAddress').innerHTML = `<a href="${maps}" target="_blank" rel="noopener">${esc(cfg.store.address)}</a>`;
   $('#cHours').textContent = cfg.store.hours;
-  $('#cPhone').textContent = cfg.store.phone;
-  $('#cInsta').textContent = cfg.store.instagram;
+  $('#cPhone').innerHTML = `<a href="tel:+${esc(cfg.store.whatsapp)}">${esc(cfg.store.phone)}</a>`;
+  const ig = String(cfg.store.instagram || '').replace(/^@/, '');
+  $('#cInsta').innerHTML = ig ? `<a href="https://www.instagram.com/${esc(ig)}/" target="_blank" rel="noopener">@${esc(ig)}</a>` : '';
   $('#cWa').href = `https://wa.me/${cfg.store.whatsapp}`;
   $('#closedBar').hidden = cfg.store.open !== false;
   $('#repeatBtn').hidden = !ls('acai_last', null);
@@ -321,8 +319,8 @@ function renderCheckout() {
           ${f('street', 'Rua', c.street, 'autocomplete="address-line1"')}
           <div class="row3">${f('number', 'Número', c.number, 'inputmode="numeric"')}${f('district', 'Bairro', c.district)}</div>
           ${f('comp', 'Complemento (opcional)', c.comp)}${f('ref', 'Ponto de referência (opcional)', c.ref)}</div></div>
-      <div class="fs"><h3>3. Pagamento</h3><div class="radios">${Object.entries(PAY).map(([k, v]) => `<label class="radio"><input type="radio" name="pay" value="${k}"> ${k === 'pix' ? '⚡' : k === 'cash' ? '💵' : '💳'} ${v}</label>`).join('')}</div>
-        <p class="hint" id="payHint">Cartões: pagamento na maquininha, na entrega ou na retirada. PIX: enviaremos a chave ao confirmar.</p>
+      <div class="fs"><h3>3. Pagamento</h3><div class="radios">${Object.entries(PAY).filter(([k]) => k !== 'pix' || cfg.store.pixKey).map(([k, v]) => `<label class="radio"><input type="radio" name="pay" value="${k}"> ${k === 'pix' ? '⚡' : k === 'cash' ? '💵' : '💳'} ${v}</label>`).join('')}</div>
+        <p class="hint" id="payHint">Pagamento na entrega ou na retirada: dinheiro ou cartão na maquininha (Visa, Mastercard, Elo e Banricompras crédito).${cfg.store.pixKey ? ' PIX: enviaremos a chave ao confirmar.' : ''}</p>
         <span class="err" id="payErr" style="color:var(--red);font-size:.78rem;display:none">Escolha a forma de pagamento.</span>
         <div id="cashBox" hidden style="margin-top:12px"><p style="font-weight:500;margin-bottom:8px">Precisa de troco?</p><div class="radios two">
           <label class="radio"><input type="radio" name="chg" value="no" checked> Não preciso</label><label class="radio"><input type="radio" name="chg" value="yes"> Sim</label></div>

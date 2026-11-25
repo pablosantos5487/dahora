@@ -1,4 +1,4 @@
-# Açaí Vivo — site completo para açaiteria
+# DaHora Açaí — site de pedidos
 
 Site estático (HTML, CSS e JavaScript puro, sem dependências) com loja, montagem do açaí em 6 etapas, carrinho, cupons, checkout, pedido por WhatsApp e painel do lojista.
 
@@ -7,7 +7,7 @@ Site estático (HTML, CSS e JavaScript puro, sem dependências) com loja, montag
 | Arquivo | Função |
 |---|---|
 | `index.html` | Loja (home, cardápio, montagem, carrinho, checkout) |
-| `styles.css` | Identidade visual (roxo, lilás, off-white, verde e creme), mobile-first |
+| `styles.css` | Identidade visual da DaHora (roxo do logo, amarelo, laranja e verde-folha), mobile-first |
 | `data.js` | Configuração padrão (produtos, tamanhos, regras, cupons) e camada de dados `DB` |
 | `app.js` | Lógica da loja: cálculo de preços, limites, carrinho, cupons, validações, WhatsApp |
 | `admin.html`, `admin.js`, `admin.css` | Painel do lojista |
@@ -16,6 +16,14 @@ Site estático (HTML, CSS e JavaScript puro, sem dependências) com loja, montag
 
 Abra `index.html` no navegador. Para publicar, configure a branch `main` e a pasta `/(root)` em *Settings → Pages*. Depois da publicação, a loja ficará em `https://pablosantos5487.github.io/dahora/` e o painel em `https://pablosantos5487.github.io/dahora/admin.html`.
 Painel: `admin.html`. Senha inicial: `admin123`.
+
+## Marca e dados reais (do Instagram @dahoracaiteria)
+
+- Logo e fotos em `img/` foram recortados de prints do Instagram. Troque por arquivos originais em alta resolução quando tiver (mesmo nome de arquivo, ou ajuste o caminho em `index.html` e `data.js`).
+- WhatsApp, telefone, endereço (Rua Independência, 769, Centro, Igrejinha/RS) e formas de pagamento seguem o perfil e a página de pedidos da loja.
+- **Confirmar no painel:** preços e tamanhos do cardápio, taxa de entrega, pedido mínimo, entrega grátis acima de, horário de funcionamento e endereço da unidade de Parobé. Os valores atuais são exemplos.
+- Os cupons de exemplo começam **desativados**. A opção PIX só aparece no checkout se houver chave PIX no painel.
+- Ao mudar a versão (`v`) em `data.js`, navegadores com configuração antiga salva voltam ao padrão novo.
 
 ## Configure antes de publicar (painel → "Loja")
 
